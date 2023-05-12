@@ -16,7 +16,7 @@ function Modal({ header, body, showCloseButton,closeModal, actionBtnText, action
           <div className="modal-header">
             <h2>{header}</h2>
             {showCloseButton && (
-              <button className="modal-close btn" onClick={closeModal}>
+              <button onClick={closeModal}>
                 <span>&times;</span>
               </button>
             )}
