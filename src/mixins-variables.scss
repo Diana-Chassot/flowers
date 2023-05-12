@@ -1,0 +1,23 @@
+/* Variables */
+/* Colors */
+$primary-color: rgb(0, 187, 250);
+$bg-color: #252525e3;
+$secondary-color:gray;
+
+/* Mixins */
+@mixin boxShadow {
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.319);
+}
+@mixin flex-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+@mixin flex-justify-between{
+    display: flex;
+    justify-content: space-between;
+}
+@mixin flex-justify-around{
+    display: flex;
+    justify-content: space-around;
+}
