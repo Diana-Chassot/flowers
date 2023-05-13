@@ -1,3 +1,5 @@
+import ModalFooter from "./ModalFooter";
+
 function Modal({ header, body, showCloseButton,closeModal, actionBtnText, action }) {
 
   return (
@@ -18,12 +20,7 @@ function Modal({ header, body, showCloseButton,closeModal, actionBtnText, action
             </p>
           </div>
           <div className="modal-footer">
-            <button className="modal-action btn" onClick={action}>
-              {actionBtnText}
-            </button>
-            <button className="modal-close btn" onClick={closeModal}>
-              Cancel
-            </button>
+            <ModalFooter actionBtnText={actionBtnText} action={action} closeModal={closeModal} />
           </div>
         </div>
       </div>
