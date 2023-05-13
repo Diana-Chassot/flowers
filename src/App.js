@@ -26,8 +26,8 @@ function App() {
     handleCloseModal();
   };
 
-  const messageBye = () => {
-    alert("Bye");
+  const messageDelete = () => {
+    alert("You have been deleted your file!");
     handleCloseModal();
   };
 
@@ -43,9 +43,9 @@ function App() {
       />
       <Button
         backgroundColor="Teal"
-        text="Bye"
+        text="Delete"
         onClick={() =>
-          handleOpenModal("Second Modal", "This is the second modal.",false, "Click to see Message Bye", messageBye )
+          handleOpenModal("Do you want to Delete this file ?", "Are you sure you want to Delete this?",false, "Delete", messageDelete )
         }
       />
       {showModal && (

@@ -31,7 +31,7 @@ function Modal({ header, body, showCloseButton,closeModal, actionBtnText, action
               {actionBtnText}
             </button>
             <button className="modal-close btn" onClick={closeModal}>
-              Close
+              Cancel
             </button>
           </div>
         </div>
