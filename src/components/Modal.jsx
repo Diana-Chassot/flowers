@@ -1,18 +1,9 @@
-import React, { useRef } from "react";
-
 function Modal({ header, body, showCloseButton,closeModal, actionBtnText, action }) {
-  const modalRef = useRef(null);
-
-  const handleClickOutside = (event) => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
-      closeModal();
-    }
-  };
 
   return (
     <>
-      <div className="modal-wrapper" onClick={handleClickOutside}>
-        <div className="modal" ref={modalRef}>
+      <div className="modal-wrapper" onClick={closeModal}>
+        <div className="modal"  onClick={event => event.stopPropagation()}>
           <div className="modal-header">
             <h2>{header}</h2>
             {showCloseButton && (
