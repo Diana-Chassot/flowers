@@ -38,7 +38,7 @@ function App() {
         backgroundColor="gray"
         text="Welcome"
         onClick={() =>
-          handleOpenModal("First Modal", "This is the first modal.",true, "Click to see Message Welcome", messageWelcome, )
+          handleOpenModal("First Modal", "This is the first modal.",true, "Click to see Message Welcome", messageWelcome)
         }
       />
       <Button
