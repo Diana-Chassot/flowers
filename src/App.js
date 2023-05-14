@@ -1,65 +1,69 @@
 import React, { useState } from 'react';
 import Button from './components/Button';
 import Modal from './components/Modal';
+import ModalFooter from './components/ModalFooter';
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-  const [modalContent, setModalContent] = useState({
-    header: "",
-    body: "",
-    actionBtnText: "",
-    action: null,
-    showCloseButton: true
-  });
+  const [showModalFirst, setShowFirstModal] = useState(false);
+  const [showModalSecond, setShowSecondModal] = useState(false);
 
-  const handleOpenModal = (header, body, showCloseButton, actionBtnText, action,) => {
-    setModalContent({ header, body,showCloseButton, actionBtnText, action  });
-    setShowModal(true);
-  };
+  const handleOpenFirstModal = () => setShowFirstModal(true);
+  const handleCloseFirstModal = () => setShowFirstModal(false);
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+  const handleOpenSecondModal = () => setShowSecondModal(true);
+  const handleCloseSecondModal = () => setShowSecondModal(false);
 
   const messageWelcome = () => {
     alert("Welcome");
-    handleCloseModal();
+    handleCloseFirstModal();
   };
 
   const messageDelete = () => {
-    alert("You have been deleted your file!");
-    handleCloseModal();
+    alert("You have deleted your file!");
+    handleCloseSecondModal();
   };
 
   return (
-    <div className="container">
-
+    <>
       <Button
-        backgroundColor="gray"
+        backgroundColor="blue"
         text="Welcome"
-        onClick={() =>
-          handleOpenModal("First Modal", "This is the first modal.",true, "Click to see Message Welcome", messageWelcome)
-        }
+        onClick={handleOpenFirstModal}
       />
-      <Button
-        backgroundColor="Teal"
-        text="Delete"
-        onClick={() =>
-          handleOpenModal("Do you want to Delete this file ?", "Are you sure you want to Delete this?",false, "Delete", messageDelete )
-        }
-      />
-      {showModal && (
+      {showModalFirst && (
         <Modal
-          header={modalContent.header}
-          body={modalContent.body}
-          closeModal={handleCloseModal}
-          actionBtnText={modalContent.actionBtnText}
-          showCloseButton={modalContent.showCloseButton}
-          action={modalContent.action}
+          header={<h3>First modal</h3>}
+          body={<p className='modal-text'>First modal content</p>}
+          footer={
+          <ModalFooter 
+          action={messageWelcome} 
+          actionBtnText={"Click to see message Welcome"} 
+          closeModal={handleCloseFirstModal}/>
+          }
+          closeModal={handleCloseFirstModal}
         />
       )}
 
-    </div>
+      <Button
+        backgroundColor="Teal"
+        text="Delete"
+        onClick={handleOpenSecondModal}
+      />
+      {showModalSecond && (
+        <Modal
+          header={<h3>Second modal</h3>}
+          body={<p className='modal-text'>Second modal content</p>}
+          footer={
+          <ModalFooter 
+          action={messageDelete} 
+          actionBtnText={"Delete"} 
+          closeModal={handleCloseSecondModal}/>
+          }
+          closeModal={handleCloseSecondModal}
+          showCloseButton={true}
+        />
+      )}
+    </>
   );
 }
 

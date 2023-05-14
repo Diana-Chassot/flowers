@@ -16,6 +16,7 @@
       @include boxShadow();
       @include flex-justify-between;
       min-width: 500px;
+      min-height: 300px;
       flex-direction: column;
   
     }
