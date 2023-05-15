@@ -1,46 +1,180 @@
+.header {
 
-  .modal-wrapper {
+  .header__menu {
+    &:hover {
+      background-color: white;
+    }
+    @include flex-justify-between;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    height: 100%;
-    justify-content: center;
+    background-color: $lightOpacity;
+    color: $primary;
+    position: fixed;
+    width: 100%;
     left: 0;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    .modal {
-      background-color: #fff;
-      border-radius: 5px;
-      @include boxShadow();
-      @include flex-justify-between;
-      min-width: 500px;
-      min-height: 300px;
-      flex-direction: column;
-  
-    }
-    .modal-header{
-      @include flex-justify-between;
-      @include boxShadow();
-      align-items: center;
-      background-color: $bg-color;
-      padding: 0 20px;
-      color: white;
-    }
-    .modal-text{
-      text-align: center;
-    }
-    .modal-footer{
-      padding: 20px;
-      @include flex-justify-around;
-    }
-    .modal-close{
-      background-color: $secondary-color;
-    }
-    .modal-action{
-      padding: 10px 30px;
-      background-color: $primary-color;
+    padding: 0 20px;
+ 
+    img {
+      max-width: 100%;
+      max-height: 120px
     }
   }
-  
+
+  .header__brand {
+    @include flex-justify-around;
+    align-items: center;
+    gap: 15px;
+    h2 {
+      color: $primary;
+      text-decoration: underline;
+      font-weight: 700;
+      font-size: 22px;
+    }
+  }
+  .header__icons {
+    font-size: 16px;
+  }
+  .favorite {
+    margin-right: 5px;
+    color: $accent;
+  }
+  .basket {
+    color: $primary;
+    border: 2px solid $primary;
+  }
+  .header__content {
+    height: 100vh;
+    @include bgCoverCenter;
+    background-image: url("/img/bg5.png");
+    @include boxShadow;
+    color: $primary;
+    display: flex;
+    align-items: center;
+  }
+  .header__content__wrapper {
+    @include boxShadow;
+    background-color: $lightOpacity;
+    padding: 10px;
+    text-align: end;
+    h1 {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.modal-wrapper {
+  align-items: center;
+  background-color: $dark;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  .modal {
+    @include bgCoverCenter;
+    @include borderRadius;
+    @include boxShadow();
+    @include flex-justify-between;
+    background-image: url("/img/bg1.jfif");
+    min-width: 500px;
+    min-height: 300px;
+    flex-direction: column;
+    color: white;
+  }
+  .modal-header {
+    @include flex-justify-between;
+    @include boxShadow();
+    align-items: center;
+    background-color: $dark;
+    padding: 0 20px;
+    font-family: "Kaushan Script", cursive;
+  }
+  .modal-title {
+    text-transform: uppercase;
+  }
+  .modal-text {
+    padding: 40px;
+    background-color: $dark;
+    text-align: center;
+  }
+  .modal-product-name {
+    text-transform: uppercase;
+  }
+  .modal-footer {
+    padding: 20px;
+    @include flex-justify-around;
+  }
+  .modal-close {
+    background-color: $primary;
+  }
+  .modal-action {
+    padding: 10px 30px;
+    background-color: $accent;
+  }
+}
+.products {
+  @include flex-justify-center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 40px;
+
+  .card {
+    @include flex-justify-around;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    min-width: 300px;
+    @include boxShadow;
+    padding: 15px;
+    position: relative;
+    gap: 10px;
+  }
+  .card-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 999;
+  }
+  img {
+    width: 100%;
+    max-height: 400px;
+    
+  }
+}
+.about-us {
+
+  margin-top: 80px;
+  text-align: center;
+  .about-us-content {
+    min-height: 800px;
+    @include flex-justify-center;
+    align-items: center;
+    gap: 40px;
+    img {
+      width: 300px;
+      @include boxShadow;
+      @include borderRadius;
+    }
+  }
+}
+.footer {
+  padding: 3px;
+  background-color: $primary;
+  color: white;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .about-us-content{
+    display: block !important;
+  }
+  .footer{
+    margin-top: 40px;
+  }
+}

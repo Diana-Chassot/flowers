@@ -1,13 +1,19 @@
-@import-normalize;
+@import "~normalize.css";
 @import "./styles/mixins-variables";
 @import "./styles/components.scss";
-
+@import "@fortawesome/fontawesome-free/css/all.css";
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-button{
+body {
+  font-family: "Merienda", cursive;
+}
+
+button {
+  background-color: transparent;
+  @include borderRadius;
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
@@ -15,8 +21,15 @@ button{
     transform: scale(1.1);
   }
 }
-body {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+a{
+  text-decoration: none;
+  outline: none;
+}
+a:hover,
+a:focus,
+a:active,
+a:visited {
+  color: $accent;
 }
 
 .container {
@@ -27,6 +40,7 @@ body {
 .btn {
   padding: 10px 15px;
   color: white;
+  background-color: $primary;
   font-size: 16px;
   @include boxShadow();
 }
