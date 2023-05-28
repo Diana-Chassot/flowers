@@ -1,14 +1,12 @@
-import React from "react";
-
 function About() {
   return (
     <section className="about-us">
       <div className="container">
         <h2>About us</h2>
-        <div className="about-us-content">
-          <img src="./img/bg2.jfif" alt="flower" />
+        <div className="about-us__content">
+          <img src="./img/bg2.jfif" alt="flower"/>
           <p>
-            In addition to our stunning flower arrangements, we offer a variety
+            In addition to our stunning Flower arrangements, we offer a variety
             of potted plants, succulents, and unique botanical gifts that add a
             touch of greenery to any space. Whether you're a seasoned gardener
             or a novice plant lover, we have something to suit every level of

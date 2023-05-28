@@ -1,8 +1,9 @@
+import PropTypes from "prop-types";
 
-function Button({ backgroundColor, text, onClick }) {
+function Button({className, backgroundColor, text, onClick }) {
   return (
     <button
-      className="btn"
+      className={className}
       style={{ backgroundColor: backgroundColor }}
       onClick={onClick}
     >
@@ -10,4 +11,14 @@ function Button({ backgroundColor, text, onClick }) {
     </button>
   );
 }
+Button.propTypes = {
+  className: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+};
+
+Button.defaultProps = {
+  className: ""
+};
+
 export default Button;

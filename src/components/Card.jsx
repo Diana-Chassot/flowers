@@ -1,14 +1,21 @@
+import PropTypes from "prop-types";
+import Button from "./Button";
 
-function Card({ imageUrl, name, color, price, addToFavorite, cardFooter}) {
+function Card({ name, imageUrl, addToFavorite, color, price, action, isFavorite }) {
+  
+  const favoriteIconClass = isFavorite ? 'fa-solid fa-star' : 'fa-regular fa-star';
+  
   return (
     <div className="card">
-      <div className="card__header>">
+      <div className="card__header">
         <h3>{name}</h3>
         <img src={imageUrl} alt={name} />
         <div className="card-icon">
-        <button className="favorite" onClick={addToFavorite}>
-          <i className="fa-regular fa-star"></i>
-          </button>
+          <Button
+            className="favorite"
+            onClick={addToFavorite}
+            text={<i className={`${favoriteIconClass} fa-star`}></i>}
+          />
         </div>
       </div>
       <div className="card__body">
@@ -18,9 +25,21 @@ function Card({ imageUrl, name, color, price, addToFavorite, cardFooter}) {
           <li>Price: {price}$</li>
         </ul>
       </div>
-      <div className="card__footer">{cardFooter}</div>
+      <div className="card__footer">
+        <Button className="btn" text="Add to Basket" onClick={action} />
+      </div>
     </div>
   );
 }
+
+Card.propTypes = {
+  imageUrl: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  addToFavorite: PropTypes.func.isRequired,
+  action: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+};
 
 export default Card;

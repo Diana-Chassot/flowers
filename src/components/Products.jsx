@@ -1,82 +1,85 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import Card from "./Card";
-import Button from "./Button";
 import Modal from "./Modal";
-import ModalFooter from "./ModalFooter";
-import { fetchData } from "../api/fetchData";
+import Button from "./Button";
+import useFetch from "../api/useFetch";
 
-function Products() {
-  const [products, setProducts] = useState([]);
-  const [showModalBasket, setShowModalBasket] = useState(false);
+function Products({ cartItems, favoriteItems, setCartItems, setFavoriteItems }) {
+  const [data] = useFetch("./data.json");
+  const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [favoriteProduct, setFavoriteProduct] = useState([]);
-  const [productInBasket, setProductInBasket] = useState([]);
-  
-  console.log('Favorite Products:', favoriteProduct);
-  console.log('Products in Basket:', productInBasket);
-  
-  const onAddToBasket = () => {
-    setProductInBasket([...productInBasket, selectedProduct]);
-    handleCloseBasketModal();
-  };
 
-  const onAddToFavorite = (product) => {
-    setFavoriteProduct((favoriteProduct) => [...favoriteProduct, product]);
-  };
-
-  const handleOpenBasketModal = (product) => {
+  const openModal = (product) => {
+    setShowModal(true);
     setSelectedProduct(product);
-    setShowModalBasket(true);
   };
-  const handleCloseBasketModal = () => setShowModalBasket(false);
 
-  useEffect(() => {
-    fetchData("./data.json")
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedProduct(null);
+  };
+
+  const addToCart = () => {
+    setCartItems([...cartItems, selectedProduct]);
+    closeModal();
+  };
+
+  const addToFavorite = (product) => {
+    const isFavorite = favoriteItems.some((item) => item.sku === product.sku);
+    
+    if (isFavorite) {
+      const updatedFavoriteItems = favoriteItems.filter(
+      (item) => item.sku !== product.sku
+      );
+      setFavoriteItems(updatedFavoriteItems);
+
+    } else {
+      setFavoriteItems([...favoriteItems, product]);
+    }
+  };
 
   return (
-    <div className="products">
-      {products.map((product) => (
-        <Card
-          key={product.sku}
-          imageUrl={product.imageUrl}
-          name={product.name}
-          color={product.color}
-          price={product.price}
-          addToFavorite={() => onAddToFavorite(product)}
-          cardFooter={
-            <Button
-              backgroundColor="#000000e6"
-              text="Add to Basket"
-              onClick={() => handleOpenBasketModal(product)}
-            />
-          }
-        />
-      ))}
-      {showModalBasket && (
+    <section className="products">
+      {data &&
+        data.map((product) => (
+          <Card
+            key={product.sku}
+            imageUrl={product.imageUrl}
+            name={product.name}
+            color={product.color}
+            price={product.price}
+            action={() => openModal(product)}
+            isFavorite={favoriteItems.some(item => item.sku === product.sku)}
+
+            addToFavorite={() => addToFavorite(product)}
+          />
+        ))}
+
+      {showModal && (
         <Modal
+          onClose={closeModal}
+          header={<span>Add to the basket?</span>}
           body={
-            <p className="modal-text">
-              Add <span className="modal-title">"{selectedProduct.name}"</span>{" "}to the basket?
-            </p>
+            <>
+              <img src={selectedProduct.imageUrl} alt={selectedProduct.name} />
+              <span>{selectedProduct.name}</span>
+              <span>{selectedProduct.price}$</span>
+            </>
           }
           footer={
-            <ModalFooter
-              action={onAddToBasket}
-              actionBtnText={"Add"}
-              closeModal={handleCloseBasketModal}
-            />
+            <>
+              <Button
+                className="btn"
+                backgroundColor="#96001a"
+                onClick={addToCart}
+                text="Add"
+              />
+              <Button className="btn" onClick={closeModal} text="Cancel" />
+            </>
           }
-          closeModal={handleCloseBasketModal}
         />
       )}
-    </div>
+    </section>
   );
 }
 

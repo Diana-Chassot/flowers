@@ -1,6 +1,6 @@
-import React from "react";
+function Header({ cartItems, favoriteItems }) {
+  const favoriteIconClass = favoriteItems.length > 0 ? 'fa-solid' : 'fa-regular';
 
-function Header() {
   return (
     <header className="header">
       <menu className="header__menu">
@@ -12,10 +12,12 @@ function Header() {
         </div>
         <div className="header__icons">
           <button className="favorite">
-            <i className="fa-regular fa-star"></i>
+            <i className={`${favoriteIconClass} fa-star`}></i>
+            <span>{favoriteItems.length}</span>
           </button>
           <button className="basket">
             <i className="fa-solid fa-cart-shopping"></i>
+            <span>{cartItems.length}</span>
           </button>
         </div>
       </menu>
