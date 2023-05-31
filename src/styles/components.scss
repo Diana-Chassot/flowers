@@ -83,6 +83,7 @@
   top: 0;
   width: 100%;
   z-index: 1000;
+
   .modal {
     @include borderRadius;
     @include boxShadow();
@@ -91,9 +92,10 @@
     min-height: 300px;
     flex-direction: column;
     background-color: white;
-    color: white;
+    color: $primary;
   }
   .modal__header {
+    @include boxShadow();
     text-align: center;
     color: $primary;
     padding: 20px;
@@ -106,18 +108,18 @@
     }
   }
   .modal__body {
-    background-color: $primary;
+    @include flex-justify-around;
     font-family: "Kaushan Script";
     align-items: center;
-    padding: 20px;
+    padding: 20px; 
+    gap: 20px;
     text-transform: uppercase;
-    @include boxShadow();
-    @include flex-justify-around;
     img {
       width: 100px;
       @include borderRadius;
       @include boxShadow();
     }
+   
   }
   .modal__footer {
     @include flex-justify-around;
@@ -182,10 +184,25 @@
     margin: 0;
   }
 }
-
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+    padding: 0 5px;
+  }
+}
 @media (max-width: 768px) {
-  .about-us-content {
-    display: block !important;
+  .nav__logo{
+    display: none;
+  }
+  .modal-wrapper{
+    .modal{
+      min-width: auto;
+    }
+  }
+  .about-us  {
+    .about-us__content {
+      flex-wrap: wrap;
+    }
   }
   .footer {
     margin-top: 40px;

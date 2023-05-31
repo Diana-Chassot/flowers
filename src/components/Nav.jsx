@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Logo = () => (
   <Link to="/" className="nav__brand">
-    <img className="nav__logo" src="./img/logo.png" alt="logo" />
+    <img className="nav__logo" src="./img/The-Secret-Garden-Logo.jpg" alt="logo" />
     <h2>Secret Garden</h2>
   </Link>
 );
@@ -16,7 +16,7 @@ const HomeButton = () => {
 
   return (
     <button className="home" onClick={handleNavigateToHome}>
-      <i className="fa-solid fa-house" style={{ color: "#990000" }}></i>
+      <i className="fa-solid fa-seedling"style={{ color: "#c30d0e" }}></i>
     </button>
   );
 };
@@ -46,7 +46,7 @@ const CartButton = ({ cartItems }) => {
 
   return (
     <button className="basket" onClick={handleNavigateToCart}>
-      <i className="fa-solid fa-cart-shopping"></i>
+      <i className="fa-solid fa-bag-shopping"></i>
       <span>{cartItems.length}</span>
     </button>
   );
