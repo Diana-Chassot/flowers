@@ -57,6 +57,7 @@ function Cart({ items = [], setItems, type }) {
       <div className="empty-cart">
         <h2>{type === "shopping-cart" ? "Cart" : "Favorites"}</h2>
         <p>Your {type === "shopping-cart" ? "cart" : "favorites"} is empty.</p>
+        <i className="fa-solid fa-heart-crack"></i>
       </div>
     );
   };

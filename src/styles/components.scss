@@ -59,6 +59,9 @@
   .empty-cart {
     margin-top: 100px;
   }
+  .empty-cart{
+    text-align: center;
+  }
   .card {
     @include flex-justify-between;
     @include boxShadow;
