@@ -1,42 +1,4 @@
 .header {
-  .header__menu {
-    &:hover {
-      background-color: white;
-    }
-    @include flex-justify-between;
-    align-items: center;
-    background-color: $lightOpacity;
-    color: $primary;
-    position: fixed;
-    width: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 0 20px;
-
-    img {
-      max-width: 100%;
-      max-height: 50px;
-    }
-  }
-
-  .header__brand {
-    @include flex-justify-around;
-    align-items: center;
-    gap: 15px;
-    h2 {
-      color: $primary;
-      text-decoration: underline;
-      font-weight: 700;
-      font-size: 22px;
-    }
-  }
-  .header__icons {
-    font-size: 16px;
-  }
-
   .header__content {
     height: 100vh;
     @include bgCoverCenter;
@@ -56,7 +18,60 @@
     }
   }
 }
+.nav {
+  &:hover {
+    background-color: white;
+  }
+  @include flex-justify-between;
+  align-items: center;
+  background-color: $lightOpacity;
+  color: $primary;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  padding: 0 20px;
 
+  img {
+    max-width: 100%;
+    max-height: 50px;
+  }
+  .nav__brand {
+    @include flex-justify-around;
+    align-items: center;
+    gap: 15px;
+    h2 {
+      color: $primary;
+      text-decoration: underline;
+      font-weight: 700;
+      font-size: 22px;
+    }
+  }
+  .nav__icons {
+    font-size: 16px;
+  }
+}
+
+.cart,
+.favorites {
+  .card-wrapper,
+  .empty-cart {
+    margin-top: 100px;
+  }
+  .card {
+    @include flex-justify-between;
+    @include boxShadow;
+    align-items: center;
+    padding: 10px;
+  }
+  img {
+    max-width: 100px;
+  }
+  .btn-close {
+    font-size: 33px;
+  }
+}
 .modal-wrapper {
   align-items: center;
   background-color: $dark;

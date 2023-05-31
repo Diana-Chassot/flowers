@@ -1,15 +1,22 @@
 import PropTypes from "prop-types";
 import Button from "./Button";
 
-function Card({ name, imageUrl, addToFavorite, color, price, action, isFavorite }) {
-  
-  const favoriteIconClass = isFavorite ? 'fa-solid fa-star' : 'fa-regular fa-star';
-  
+const CardHeader = ({
+  name,
+  imageUrl,
+  showFavoriteIcon,
+  addToFavorite,
+  isFavorite,
+}) => {
+  const favoriteIconClass = isFavorite
+    ? "fa-solid fa-star"
+    : "fa-regular fa-star";
+
   return (
-    <div className="card">
-      <div className="card__header">
-        <h3>{name}</h3>
-        <img src={imageUrl} alt={name} />
+    <div className="card__header">
+      <h3>{name}</h3>
+      <img src={imageUrl} alt={name} />
+      {showFavoriteIcon && (
         <div className="card-icon">
           <Button
             className="favorite"
@@ -17,29 +24,65 @@ function Card({ name, imageUrl, addToFavorite, color, price, action, isFavorite 
             text={<i className={`${favoriteIconClass} fa-star`}></i>}
           />
         </div>
-      </div>
-      <div className="card__body">
-        <ul>
-          <li>Bouqet: "{name}"</li>
-          <li>Color: {color}</li>
-          <li>Price: {price}$</li>
-        </ul>
-      </div>
-      <div className="card__footer">
-        <Button className="btn" text="Add to Basket" onClick={action} />
-      </div>
+      )}
     </div>
   );
-}
+};
+
+const CardBody = ({ name, color, price }) => (
+  <div className="card__body">
+    <ul>
+      <li>Bouqet: "{name}"</li>
+      <li>Color: {color}</li>
+      <li>Price: {price}$</li>
+    </ul>
+  </div>
+);
+
+const CardFooter = ({ cardFooter }) => (
+  <div className="card__footer">{cardFooter}</div>
+);
+
+const Card = ({
+  id,
+  name,
+  imageUrl,
+  color,
+  price,
+  showFavoriteIcon,
+  addToFavorite,
+  isFavorite,
+  cardFooter,
+}) => {
+  return (
+    <div className="card" id={id}>
+      <CardHeader
+        name={name}
+        imageUrl={imageUrl}
+        showFavoriteIcon={showFavoriteIcon}
+        addToFavorite={addToFavorite}
+        isFavorite={isFavorite}
+      />
+      <CardBody name={name} color={color} price={price} />
+      <CardFooter cardFooter={cardFooter} />
+    </div>
+  );
+};
 
 Card.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  addToFavorite: PropTypes.func.isRequired,
-  action: PropTypes.func.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
+  showFavoriteIcon: PropTypes.bool,
+  addToFavorite: PropTypes.func,
+  isFavorite: PropTypes.bool,
+  cardFooter: PropTypes.node,
+};
+
+Card.defaultProps = {
+  showFavoriteIcon: false,
 };
 
 export default Card;

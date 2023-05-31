@@ -1,27 +1,12 @@
-function Header({ cartItems, favoriteItems }) {
-  const favoriteIconClass = favoriteItems.length > 0 ? 'fa-solid' : 'fa-regular';
+import Nav from './Nav';
 
+function Header({ cartItems, favoriteItems}) {
   return (
     <header className="header">
-      <menu className="header__menu">
-        <div>
-          <a className="header__brand" href="#">
-            <img className="header__logo" src="./img/logo.png" alt="logo" />
-            <h2>Secret Garden</h2>
-          </a>
-        </div>
-        <div className="header__icons">
-          <button className="favorite">
-            <i className={`${favoriteIconClass} fa-star`}></i>
-            <span>{favoriteItems.length}</span>
-          </button>
-          <button className="basket">
-            <i className="fa-solid fa-cart-shopping"></i>
-            <span>{cartItems.length}</span>
-          </button>
-        </div>
-      </menu>
-
+      <Nav
+      cartItems={cartItems} 
+      favoriteItems={favoriteItems} 
+      />
       <div className="header__content">
         <div className="container">
           <div className="header__content__wrapper">
