@@ -1,68 +1,52 @@
 import { Link, useNavigate } from "react-router-dom";
 
+const Nav = ({ cartItems, favoriteItems }) => {
+  const navigate = useNavigate();
+  return (
+    <menu className="nav">
+      <Logo/>
+      <div className="nav__icons">
+        <HomeButton navigate={navigate} />
+        <FavoritesButton navigate={navigate} favoriteItems={favoriteItems} />
+        <CartButton navigate={navigate} cartItems={cartItems} />
+      </div>
+    </menu>
+  );
+};
+
 const Logo = () => (
   <Link to="/" className="nav__brand">
-    <img className="nav__logo" src="./img/The-Secret-Garden-Logo.jpg" alt="logo" />
+    <img
+      className="nav__logo"
+      src="./img/The-Secret-Garden-Logo.jpg"
+      alt="logo"
+    />
     <h2>Secret Garden</h2>
   </Link>
 );
 
-const HomeButton = () => {
-  const navigate = useNavigate();
+const HomeButton = ({ navigate }) => (
+  <button className="home" onClick={() => navigate("/")}>
+    <i className="fa-solid fa-seedling" style={{ color: "#c30d0e" }}></i>
+  </button>
+);
 
-  const handleNavigateToHome = () => {
-    navigate("/");
-  };
-
-  return (
-    <button className="home" onClick={handleNavigateToHome}>
-      <i className="fa-solid fa-seedling"style={{ color: "#c30d0e" }}></i>
-    </button>
-  );
-};
-
-const FavoritesButton = ({ favoriteItems }) => {
-  const navigate = useNavigate();
+const FavoritesButton = ({ navigate, favoriteItems }) => {
   const favoriteIconClass = favoriteItems.length > 0 ? "fa-solid" : "fa-regular";
-
-  const handleNavigateToFavorites = () => {
-    navigate("/favorites");
-  };
-
   return (
-    <button className="favorite" onClick={handleNavigateToFavorites}>
+    <button className="favorite" onClick={()=>navigate("/favorites")}>
       <i className={`${favoriteIconClass} fa-star`}></i>
       <span>{favoriteItems.length}</span>
     </button>
   );
 };
 
-const CartButton = ({ cartItems }) => {
-  const navigate = useNavigate();
-
-  const handleNavigateToCart = () => {
-    navigate("/cart");
-  };
-
+const CartButton = ({ navigate, cartItems }) => {
   return (
-    <button className="basket" onClick={handleNavigateToCart}>
+    <button className="basket" onClick={()=>navigate("/cart")}>
       <i className="fa-solid fa-bag-shopping"></i>
       <span>{cartItems.length}</span>
     </button>
   );
 };
-
-const Nav = ({ cartItems, favoriteItems }) => {
-  return (
-    <menu className="nav">
-      <Logo />
-      <div className="nav__icons">
-        <HomeButton />
-        <FavoritesButton favoriteItems={favoriteItems} />
-        <CartButton cartItems={cartItems} />
-      </div>
-    </menu>
-  );
-};
-
 export default Nav;
