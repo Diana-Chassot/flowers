@@ -18,14 +18,17 @@ $lightOpacity: rgba(255, 255, 255, 0.6);
 @mixin flex-justify-between{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 @mixin flex-justify-around{
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 @mixin flex-justify-center{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 @mixin borderRadius{
 border-radius: 4px;

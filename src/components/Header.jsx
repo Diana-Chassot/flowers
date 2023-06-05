@@ -1,12 +1,7 @@
-import Nav from './Nav';
 
-function Header({ cartItems, favoriteItems}) {
+function Header() {
   return (
     <header className="header">
-      <Nav
-      cartItems={cartItems} 
-      favoriteItems={favoriteItems} 
-      />
       <div className="header__content">
         <div className="container">
           <div className="header__content__wrapper">

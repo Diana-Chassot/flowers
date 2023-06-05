@@ -1,48 +1,65 @@
+import { closeModal } from "../features/modalSlice";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import Button from "./Button";
 
-const ModalHeader = ({ header, showCloseButton, onClose }) => (
-  <div className="modal__header">
-    {header}
-    {showCloseButton && (
-      <Button className="btn-close" onClick={onClose} text="&times;" />
-    )}
-  </div>
-);
+const Modal = ({ header, showCloseButton, modalActionBtn }) => {
+  const isModalOpen = useSelector((state) => state.modal.onOpen);
+  const dispatch = useDispatch();
+  const selectedProduct = useSelector((state) => state.modal.selectedProduct);
 
-const ModalBody = ({ body }) => <div className="modal__body">{body}</div>;
+  const handleCancel = () => {
+    dispatch(closeModal());
+  };
 
-const ModalFooter = ({ footer }) => <div className="modal__footer">{footer}</div>;
-
-const Modal = ({ header, body, footer, showCloseButton, onClose }) => {
   return (
     <>
-      <div className="modal-wrapper" onClick={onClose}>
-        <div className="modal" onClick={(event) => event.stopPropagation()}>
-          <ModalHeader
-            header={header}
-            showCloseButton={showCloseButton}
-            onClose={onClose}
-          />
-          <ModalBody body={body} />
-          <ModalFooter footer={footer} />
+      {isModalOpen && (
+        <div className="modal-wrapper" onClick={handleCancel}>
+          <div className="modal" onClick={(event) => event.stopPropagation()}>
+            <div className="modal__header">
+              {header}
+              {showCloseButton && (
+                <Button
+                  className="btn-close"
+                  onClick={handleCancel}
+                  text="&times;"
+                />
+              )}
+            </div>
+            <div className="modal__body">
+              <>
+                {selectedProduct && (
+                  <>
+                    <img
+                      src={selectedProduct.imageUrl}
+                      alt={selectedProduct.name}
+                    />
+                    <span>{selectedProduct.name}</span>
+                    <span>{selectedProduct.price}$</span>
+                  </>
+                )}
+              </>
+            </div>
+            <div className="modal__footer">
+              {modalActionBtn}
+              <Button className="btn" onClick={handleCancel} text="Cancel"/>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
 
 Modal.propTypes = {
-  header: PropTypes.node,
-  body: PropTypes.node.isRequired,
-  footer: PropTypes.node,
+  header: PropTypes.node, 
   showCloseButton: PropTypes.bool,
-  onClose: PropTypes.func.isRequired,
+  modalActionBtn: PropTypes.node.isRequired,
 };
 
 Modal.defaultProps = {
   header: null,
-  footer: null,
   showCloseButton: false,
 };
 

@@ -1,13 +1,10 @@
-import Cart from "../components/Cart";
-function Favorites({favoriteItems,setFavoriteItems}) {
+import FavoriteCart from "../components/Carts/FavoriteCart";
+
+function Favorites() {
   return (
     <section className="favorites">
       <div className="container">
-        <Cart
-          items={favoriteItems}
-          setItems={setFavoriteItems}
-          type="favorite-cart"
-        />
+        <FavoriteCart />
       </div>
     </section>
   );
