@@ -1,13 +1,12 @@
 import { closeModal } from "../features/modalSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import Button from "./Button";
 
 const Modal = ({ header, showCloseButton, modalActionBtn }) => {
   const isModalOpen = useSelector((state) => state.modal.onOpen);
-  const dispatch = useDispatch();
   const selectedProduct = useSelector((state) => state.modal.selectedProduct);
-
+  const dispatch = useDispatch();
   const handleCancel = () => {
     dispatch(closeModal());
   };

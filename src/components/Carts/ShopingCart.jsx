@@ -3,6 +3,8 @@ import { removeFromCart } from "../../features/shopingCartSlice";
 import { openModal, closeModal } from "../../features/modalSlice";
 import { calculateTotal } from "../../features/shopingCartSlice";
 import { addToStock } from "../../features/productsSlice";
+import { openForm } from "../../features/formSlice";
+
 import Button from "../Button";
 import Card from "../Card";
 import Modal from "../Modal";
@@ -26,6 +28,9 @@ function ShopingCart() {
       dispatch(calculateTotal());
     }
   };
+  const showForm = () => {
+    dispatch(openForm());
+  };
 
   const EmptyShopingCartMessage = () => {
     return (
@@ -40,36 +45,46 @@ function ShopingCart() {
   const ShopingCartItems = () => {
     return (
       <>
-        
-        {cartProducts.map((product) => (
-          <Card
-            id={product.sku}
-            key={product.sku}
-            name={product.name}
-            imageUrl={product.imageUrl}
-            color={product.color}
-            price={product.price}
-            cardFooter={
+        <div className="card-wrapper">
+          {cartProducts.map((product) => (
+            <Card
+              id={product.sku}
+              key={product.sku}
+              name={product.name}
+              imageUrl={product.imageUrl}
+              color={product.color}
+              price={product.price}
+              cardFooter={
+                <Button
+                  className="btn-close"
+                  text="&times;"
+                  onClick={() => handleConfirm(product)}
+                />
+              }
+            />
+          ))}
+          <Modal
+            header={<span>Remove from Cart?</span>}
+            modalActionBtn={
               <Button
-                className="btn-close"
-                text="&times;"
-                onClick={() => handleConfirm(product)}
+                className="btn"
+                backgroundColor="#c30d0e"
+                onClick={handleRemove}
+                text="Remove"
               />
             }
           />
-        ))}
-        <Modal
-          header={<span>Remove from Cart?</span>}
-          modalActionBtn={
+        </div>
+        <div className="cart__footer">
+          <div className="cart__total">
+            <span> TOTAL: {total}$</span>
             <Button
-              className="btn"
-              backgroundColor="#c30d0e"
-              onClick={handleRemove}
-              text="Remove"
+              className="continue-btn"
+              text="Continue"
+              onClick={showForm}
             />
-          }
-        />
-        <div className="cart__total">Total: {total}$</div>
+          </div>
+        </div>
       </>
     );
   };
@@ -78,7 +93,9 @@ function ShopingCart() {
       {cartProducts.length === 0 ? (
         <EmptyShopingCartMessage />
       ) : (
-        <ShopingCartItems />
+        <>
+          <ShopingCartItems />
+        </>
       )}
     </>
   );

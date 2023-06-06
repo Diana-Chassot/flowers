@@ -26,7 +26,7 @@ const Products = () => {
     if(!isDataLoaded){
     dispatch(getProducts())
   }
-  }, [isDataLoaded]);
+  }, []);
 
   if (status === "loading") {
     return <p>Loading....</p>;
