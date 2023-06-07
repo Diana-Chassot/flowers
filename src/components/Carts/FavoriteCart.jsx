@@ -36,7 +36,7 @@ function FavoriteCart() {
       <div className="empty-cart">
         <h2>"Favorites"</h2>
         <p>Your "favorites" is empty.</p>
-        <i className="fa-solid fa-heart-crack"></i>
+        <p><i className="fa-solid fa-heart-crack"></i></p>
       </div>
     );
   };

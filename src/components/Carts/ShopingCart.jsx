@@ -37,7 +37,7 @@ function ShopingCart() {
       <div className="empty-cart">
         <h2>"Cart"</h2>
         <p>Your "Bag" is empty.</p>
-        <i className="fa-solid fa-heart-crack"></i>
+        <p><i className="fa-solid fa-heart-crack"></i></p>
       </div>
     );
   };
