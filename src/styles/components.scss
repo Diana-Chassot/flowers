@@ -1,3 +1,4 @@
+/* header */
 .header {
   .header__content {
     @include bgCoverCenter;
@@ -18,6 +19,7 @@
     }
   }
 }
+/* nav */
 .nav {
   &:hover {
     background-color: white;
@@ -50,7 +52,7 @@
     font-size: 16px;
   }
 }
-
+/* shoping-cart favorite-cart */
 .cart,
 .favorites {
   .card {
@@ -72,6 +74,7 @@
     margin-top: 10px;
   }
 }
+/* shoping-cart */
 .cart {
   .card {
     @include flex-justify-between;
@@ -98,10 +101,11 @@
     font-family: "Courier New", Courier, monospace;
   }
 }
+/* favorite-cart */
 .favorites {
   .card-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 10px;
   }
   .card {
@@ -120,6 +124,7 @@
     color: $secondary;
   }
 }
+/* modal */
 .modal-wrapper {
   @include flex-justify-center;
   background-color: $dark;
@@ -174,6 +179,7 @@
     background-color: $accent;
   }
 }
+/* products */
 .our-products {
   margin-top: 100px;
   .our-products__products {
@@ -203,6 +209,7 @@
     height: auto;
   }
 }
+/* about-us */
 .about-us {
   min-height: 600px;
   margin-top: 80px;
@@ -218,6 +225,7 @@
     }
   }
 }
+/* footer */
 .footer {
   background-color: $primary;
   color: white;
@@ -230,7 +238,7 @@
     margin: 0;
   }
 }
-
+/* form */
 .client-form {
   height: 100vh;
   position: fixed;
@@ -255,7 +263,7 @@
     margin-right: 10px;
   }
 }
-
+/* Medias */
 @media (max-width: 768px) {
   .nav__logo {
     display: none;
