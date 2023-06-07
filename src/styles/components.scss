@@ -25,13 +25,11 @@
     background-color: white;
   }
   @include flex-justify-between;
+  @include positionFixed;
+  left: 0;
+  width: 100%;
   background-color: $lightOpacity;
   color: $primary;
-  position: fixed;
-  width: 100%;
-  left: 0;
-  top: 0;
-  z-index: 1000;
   padding: 0 20px;
 
   img {
@@ -70,8 +68,34 @@
   img {
     max-width: 100px;
   }
-  p{
+  p {
     margin-top: 10px;
+  }
+}
+.success {
+  @include positionFixed;
+  @include bgCoverCenter;
+  @include boxShadow;
+  @include flex-justify-around;
+  align-items: center;
+  background-image: url("/img/bg3.jfif");
+  width: 60%;
+  height: 60%;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+
+  .success-wrapper {
+    background-color: $lightOpacity;
+    @include boxShadow;
+    @include flex-col;
+    width: 70%;
+    height: 70%;
+    gap: 10px;
+    color: $primary;
+    padding: 20px;
+    align-items: flex-start;
+    border: 2px solid white;
   }
 }
 /* shoping-cart */
@@ -127,13 +151,11 @@
 /* modal */
 .modal-wrapper {
   @include flex-justify-center;
+  @include positionFixed;
+  left: 0;
+  width: 100%;
   background-color: $dark;
   height: 100%;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
 
   .modal {
     @include borderRadius;
@@ -219,9 +241,9 @@
     align-items: center;
     gap: 40px;
     img {
-      width: 300px;
       @include boxShadow;
       @include borderRadius;
+      width: 300px;
     }
   }
 }
@@ -240,11 +262,9 @@
 }
 /* form */
 .client-form {
+  @include positionFixed;
   height: 100vh;
-  position: fixed;
   right: 0;
-  top: 0;
-  z-index: 10000;
   padding: 20px;
   color: white;
   background-color: $primary;
@@ -252,7 +272,6 @@
     @include flex-col;
     margin-top: 10px;
   }
-
   .error-message {
     color: $accent;
   }
@@ -278,8 +297,26 @@
       flex-wrap: wrap;
     }
   }
+  .success {
+    width: 70%;
+    height: 50%;
+    .success-wrapper {
+      width: 80%;
+      height: auto;
+    }
+  }
   .footer {
     margin-top: 40px;
+  }
+}
+@media (max-width: 480px){
+  .success {
+    width: 100%;
+    height: 50%;
+    .success-wrapper {
+      width: 90%;
+      height: auto;
+    }
   }
 }
 @media (max-width: 350px) {
@@ -288,4 +325,5 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
   }
+  
 }

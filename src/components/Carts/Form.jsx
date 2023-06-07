@@ -3,9 +3,12 @@ import { closeForm } from "../../features/formSlice";
 import { useFormik } from "formik";
 import { PatternFormat } from 'react-number-format';
 import { removeFromCart } from "../../features/shopingCartSlice";
+import { useState } from "react";
+import MessageSuccess from "../MessageSuccess";
 import * as Yup from "yup";
 
 function Form() {
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const isFormOpen = useSelector((state) => state.form.onOpen);
   const cartProducts = useSelector((state) => state.shopingCart.items);
   const dispatch = useDispatch();
@@ -15,6 +18,7 @@ function Form() {
       cartProducts.forEach((product) => {
         dispatch(removeFromCart(product.sku));
       });
+      setIsSuccessOpen(true)
     }
     console.log("Sold items:", cartProducts);
     console.log("Client delivery details::", values);
@@ -166,17 +170,19 @@ function Form() {
                 )}
               </div>
               <div>
-                <button type="submit" className="btn">
+                <button type="submit" className="btn btn--light">
                   Submit
                 </button>
-                <button type="cancel" className="btn" onClick={hideForm}>
+                <button type="cancel" className="btn btn--light" onClick={hideForm}>
                   Cancel
                 </button>
               </div>
             </form>
           </div>
       )}
+      <MessageSuccess onOpen={isSuccessOpen} setOnOpen={setIsSuccessOpen} />
     </>
+
   );
 }
 
