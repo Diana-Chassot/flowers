@@ -11,9 +11,9 @@ function App() {
     <Router>
       <Nav />
       <Routes>
-        <Route index element={<Home/>} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/flowers" element={<Home/>} />
+        <Route path="/flowers/cart" element={<Cart />} />
+        <Route path="/flowers/favorites" element={<Favorites />} />
       </Routes>
     </Router>
   );

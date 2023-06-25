@@ -11,7 +11,7 @@ const Nav = () => {
   const cartProductsLength = cartProducts.length;
 
   const Logo = () => (
-    <Link to="/" className="nav__brand">
+    <Link to="/flowers" className="nav__brand">
       <img
         className="nav__logo"
         src="./img/The-Secret-Garden-Logo.jpg"
@@ -30,7 +30,7 @@ const Nav = () => {
   const FavoritesButton = () => {
     const favoriteIconClass = favoriteCartLength > 0 ? "fa-solid" : "fa-regular";
     return (
-      <button className="favorite" onClick={() => navigate("/favorites")}>
+      <button className="favorite" onClick={() => navigate("/flowers/favorites")}>
         <i className={`${favoriteIconClass} fa-star`}></i>
         <span>{favoriteCartLength}</span>
       </button>
@@ -39,7 +39,7 @@ const Nav = () => {
 
   const CartButton = () => {
     return (
-      <button className="basket" onClick={() => navigate("/cart")}>
+      <button className="basket" onClick={() => navigate("/flowers/cart")}>
         <i className="fa-solid fa-bag-shopping"></i>
         <span>{cartProductsLength}</span>
       </button>
