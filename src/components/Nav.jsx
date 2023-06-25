@@ -14,7 +14,7 @@ const Nav = () => {
     <Link to="/flowers" className="nav__brand">
       <img
         className="nav__logo"
-        src="./img/The-Secret-Garden-Logo.jpg"
+        src="./img/logo.jpg"
         alt="logo"
       />
       <h2>Secret Garden</h2>
