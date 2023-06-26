@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const getProducts = createAsyncThunk("product/get", async () => {
-  const response = await fetch("./data.json");
+  const response = await fetch((`${process.env.PUBLIC_URL}/data.json`));
   const data = await response.json();
   return data;
 });

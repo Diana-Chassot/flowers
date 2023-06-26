@@ -31,7 +31,7 @@ const Modal = ({ header, showCloseButton, modalActionBtn }) => {
                 {selectedProduct && (
                   <>
                     <img
-                      src={selectedProduct.imageUrl}
+                      src={`${process.env.PUBLIC_URL}${selectedProduct.imageUrl}`}
                       alt={selectedProduct.name}
                     />
                     <span>{selectedProduct.name}</span>

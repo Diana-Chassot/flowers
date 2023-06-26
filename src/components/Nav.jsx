@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import LogoImg from "../img/logo.jpg";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Nav = () => {
     <Link to="/" className="nav__brand">
       <img
         className="nav__logo"
-        src="./img/logo.jpg"
+        src={LogoImg}
         alt="logo"
       />
       <h2>Secret Garden</h2>

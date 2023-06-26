@@ -5,7 +5,7 @@ const Card = ({id,name,imageUrl,color,price,cardHeader,cardFooter}) => {
     <div className="card" id={id}>
       <div className="card__header">
         <h3>{name}</h3>
-        <img src={imageUrl} alt={name} />
+        <img src={`${process.env.PUBLIC_URL}${imageUrl}`} alt={name} />
         {cardHeader}
       </div>
       <div className="card__body">

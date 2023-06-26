@@ -1,10 +1,12 @@
+import AboutImgPath from "../img/bg2.jfif"
+
 function About() {
   return (
     <section className="about-us">
       <div className="container">
         <h2>About us</h2>
         <div className="about-us__content">
-          <img src="./img/bg2.jfif" alt="flower"/>
+          <img src={AboutImgPath} alt="flower"/>
           <p>
           In addition to our stunning Flower arrangements, we offer a variety
             of potted plants, succulents, and unique botanical gifts that add a
