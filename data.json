@@ -1,14 +1,14 @@
 [{
     "name": "Winter Wonderland",
     "price": 35,
-    "imageUrl": "./img/flower1.jfif",
+    "imageUrl": "/img/flower1.jfif",
     "sku": "456789",
     "color": "Pink"
 },
 {
     "name": "Romantic Spirit",
     "price": 40,
-    "imageUrl": "./img/flower2.jfif",
+    "imageUrl": "/img/flower2.jfif",
     "sku": "567890",
     "color": "Pink"
 },
@@ -22,28 +22,28 @@
 {
     "name": "Sunny Daisies",
     "price": 22,
-    "imageUrl": "./img/flower4.jfif",
+    "imageUrl": "/img/flower4.jfif",
     "sku": "789012",
     "color": "Pink"
 },
 {
     "name": "Spring Blossoms",
     "price": 25,
-    "imageUrl": "./img/flower5.jfif",
+    "imageUrl": "/img/flower5.jfif",
     "sku": "113976",
     "color": "White"
 },
 {
     "name": "Summer Sunshine",
     "price": 30,
-    "imageUrl": "./img/flower6.jfif",
+    "imageUrl": "/img/flower6.jfif",
     "sku": "239217",
     "color": "Pink"
 },
 {
     "name": "Autumn Harvest",
     "price": 25,
-    "imageUrl": "./img/flower7.jfif",
+    "imageUrl": "/img/flower7.jfif",
     "sku": "145348",
     "color": "Red"
 },
@@ -57,28 +57,28 @@
 {
     "name": "Whimsical Whispers",
     "price": 32,
-    "imageUrl": "./img/flower9.jfif",
+    "imageUrl": "/img/flower9.jfif",
     "sku": "448671",
     "color": "White"
 },
 {
     "name": "Enchanted Gardens",
     "price": 32,
-    "imageUrl": "./img/flower10.jfif",
+    "imageUrl": "/img/flower10.jfif",
     "sku": "943648",
     "color": "Pink"
 },
 {
     "name": "Majestic Blooms",
     "price": 40,
-    "imageUrl": "./img/flower11.jfif",
+    "imageUrl": "/img/flower11.jfif",
     "sku": "321478",
     "color": "Pink"
 },
 {
     "name": "Blooming Bliss",
     "price": 42,
-    "imageUrl": "./img/flower12.jfif",
+    "imageUrl": "/img/flower12.jfif",
     "sku": "3325456",
     "color": "Pink"
 }
