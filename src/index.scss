@@ -7,7 +7,12 @@
 *::after {
   box-sizing: border-box;
 }
+html,
+#root {
+  min-height: 100%;
+}
 body {
+  min-height: 100%;
   font-family: "Merienda", cursive;
 }
 
@@ -28,7 +33,7 @@ button {
 .basket {
   color: $primary;
 }
-a{
+a {
   text-decoration: none;
   outline: none;
 }
@@ -38,7 +43,7 @@ a:active,
 a:visited {
   color: $accent;
 }
-p{
+p {
   margin: 0;
 }
 input,
@@ -60,7 +65,7 @@ textarea {
   font-size: 16px;
   @include boxShadow();
 }
-.btn--light{
+.btn--light {
   color: $primary;
   background-color: white;
 }

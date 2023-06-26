@@ -15,7 +15,7 @@
 {
     "name": "Enchanting Lilies",
     "price": 32,
-    "imageUrl": "/img/flower8.jfif",
+    "imageUrl": "/img/flower3.jfif",
     "sku": "678901",
     "color": "Orange"
 },
@@ -50,7 +50,7 @@
 {
     "name": "Serene Serenade",
     "price": 28,
-    "imageUrl": "/img/flower4.jfif",
+    "imageUrl": "/img/flower8.jfif",
     "sku": "145318",
     "color": "Orange"
 },

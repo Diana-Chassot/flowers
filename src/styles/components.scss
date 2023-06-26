@@ -1,9 +1,10 @@
 /* header */
 .header {
+  min-height: 100%;
   .header__content {
     @include bgCoverCenter;
     @include boxShadow;
-    height: 100vh;
+    min-height: 100vh;
     background-image: url("/img/bg5.png");
     color: $primary;
     display: flex;
@@ -266,11 +267,12 @@
 /* form */
 .client-form {
   @include positionFixed;
-  height: 100vh;
+  height: 100%;
   right: 0;
   padding: 20px;
   color: white;
   background-color: $primary;
+  overflow-x: scroll;
   .form-control {
     @include flex-col;
     margin-top: 10px;
@@ -338,10 +340,4 @@
     }
   }
   
-}
-@media screen and (orientation: landscape) {
-  .client-form {
-    overflow-x: scroll;
-    height: 100%;
-  }
 }
