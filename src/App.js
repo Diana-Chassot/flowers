@@ -1,5 +1,5 @@
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route, HashRouter } from 'react-router-dom';
 import Nav from './components/Nav';
 import Home from './pages';
 import Cart from './pages/Cart';
@@ -8,14 +8,14 @@ import Favorites from './pages/Favorites';
 function App() {
 
   return (
-    <Router>
+    <HashRouter>
       <Nav />
       <Routes>
-        <Route path="/flowers" element={<Home/>} />
-        <Route path="/flowers/cart" element={<Cart />} />
-        <Route path="/flowers/favorites" element={<Favorites />} />
+        <Route path="/" element={<Home/>} index/>
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
-    </Router>
+    </HashRouter>
   );
 }
 
