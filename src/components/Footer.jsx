@@ -21,7 +21,6 @@ function Footer() {
               <FontAwesomeIcon icon={faFacebook} />
             </a>
           </div>
-          <p>Diana`s Cool Flowers&copy;</p>
         </div>
       </div>
     </footer>
