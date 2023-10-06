@@ -13,11 +13,6 @@ const Nav = () => {
 
   const Logo = () => (
     <Link to="/" className="nav__brand">
-      <img
-        className="nav__logo"
-        src={LogoImg}
-        alt="logo"
-      />
       <h2>Secret Garden</h2>
     </Link>
   );

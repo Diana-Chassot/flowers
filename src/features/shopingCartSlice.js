@@ -13,7 +13,6 @@ const shopingCartSlice = createSlice({
       },
       removeFromCart: (state, action) => {
         state.items = state.items.filter((item) => item.sku !== action.payload);
-
       },
       calculateTotal: (state) => {
         state.total = state.items.reduce((total, item) => total + item.price, 0);

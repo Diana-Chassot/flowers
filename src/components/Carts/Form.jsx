@@ -38,13 +38,6 @@ function Form() {
       .min(3, "Last Name must be at least 3 characters")
       .max(15, "Last Name must be 15 characters or less")
       .required("Required"),
-    age: Yup.number()
-      .typeError("Age must be a valid number")
-      .integer("Age must be an integer")
-      .positive("Age must be a positive number")
-      .min(18, "Invalid")
-      .max(120, "Invalid")
-      .optional(),
     street: Yup.string().required("Required"),
     city: Yup.string().required("Required"),
     houseNumber: Yup.string().required("Required"),
@@ -78,7 +71,7 @@ function Form() {
 
             <form onSubmit={formik.handleSubmit}>
               <div className="form-control">
-                <label htmlFor="firstName">First Name</label>
+                <label>First Name</label>
                 <input
                   type="text"
                   name="firstName"
@@ -91,7 +84,7 @@ function Form() {
                 )}
               </div>
               <div className="form-control">
-                <label htmlFor="lastName">Last Name</label>
+                <label>Last Name</label>
                 <input
                   type="text"
                   name="lastName"
@@ -103,22 +96,10 @@ function Form() {
                   <p className="error-message">{formik.errors.lastName}</p>
                 )}
               </div>
-              <div className="form-control">
-                <label htmlFor="age">Age</label>
-                <input
-                  type="number"
-                  name="age"
-                  value={formik.values.age}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
-                {formik.touched.age && formik.errors.age && (
-                  <p className="error-message">{formik.errors.age}</p>
-                )}
-              </div>
+              
               <fieldset className="form-control" htmlFor="Adress">
                 <legend>Adress</legend>
-                <label htmlFor="city">City</label>
+                <label>City</label>
                 <input
                   type="text"
                   id="city"
@@ -130,7 +111,7 @@ function Form() {
                 {formik.touched.city && formik.errors.city && (
                   <p className="error-message">{formik.errors.city}</p>
                 )}
-                <label htmlFor="street">Street</label>
+                <label>Street</label>
                 <input
                   type="text"
                   name="street"
@@ -141,8 +122,7 @@ function Form() {
                 {formik.touched.street && formik.errors.street && (
                   <p className="error-message">{formik.errors.street}</p>
                 )}
-
-                <label htmlFor="houseNumber">House Number</label>
+                <label>House Number</label>
                 <input
                   type="text"
                   name="houseNumber"
@@ -155,11 +135,9 @@ function Form() {
                 )}
               </fieldset>
               <div className="form-control">
-                <label htmlFor="phone">Phone</label>
+                <label>Phone</label>
                 <PatternFormat
                   format="(+##) ### ## ## ##" allowEmptyFormatting mask="_"
-                  
-                  
                   name="phone"
                   value={formik.values.phone}
                   onChange={formik.handleChange}
